@@ -1,0 +1,16 @@
+{
+  "name": "code-splat-source",
+  "version": "0.0.0",
+  "moduleType": [ "node" ],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap.min": "http://bootswatch.com/slate/bootstrap.min.css"
+  }
+}

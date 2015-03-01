@@ -38,5 +38,16 @@ dist/
 .tmp/
 
 
+### Bower ###
+bower_components
+.bower-cache
+.bower-registry
+.bower-tmp
+
+
 ### DocPad ###
 out/
+
+
+### Bower Assets ###
+bootstrap.min.css

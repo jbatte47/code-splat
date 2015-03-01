@@ -1,14 +1,13 @@
 # code-splat
 ## Official website (source code)
 
-This site is built using [DocPad][].
+This site is built using [DocPad][] and [Bower][].
 
 Setup and run:
 
 ```bash
-$ npm install
 $ npm start
 ```
 
+[Bower]: http://bower.io/
 [DocPad]: https://docpad.org/
-
