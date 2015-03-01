@@ -1,0 +1,45 @@
+- var scripts = getBlock("scripts")
+- var styles = getBlock("styles")
+
+//- jQuery
+- scripts.add(["//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"])
+
+//- Bootstrap
+- scripts.add(["//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"])
+- styles.add(["http://bootswatch.com/slate/bootstrap.min.css"])
+
+//- Modernizr
+- scripts.add(["//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"])
+
+//- User
+- styles.add(["/styles/style.css"])
+- scripts.add(["/scripts/script.js"])
+
+//- Document
+- scripts.add(document.scripts || [])
+- styles.add(document.styles || [])
+
+doctype html
+html(lang="en")
+  head
+    meta(charset="utf-8")
+    meta(http-equiv="content-type", content="text/html; charset=utf-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge,chrome=1")
+    meta(name="viewport", content="width=device-width")
+    meta(name="author", content=site.author)
+    != getBlock('meta').toHTML()
+
+    title= getTitle()
+
+    //if lt IE 9
+      script(async src="http://html5shim.googlecode.com/svn/trunk/html5.js")
+
+    != styles.toHTML()
+  body
+    .container
+      section#content.content!= content
+      hr
+      footer
+        div © #{site.author} #{site.date.getFullYear()}
+
+    != scripts.toHTML()
