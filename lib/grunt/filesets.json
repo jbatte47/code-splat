@@ -1,0 +1,17 @@
+{
+  "all": [
+    "Gruntfile.js",
+    "lib/**/*.js",
+    "src/**/*.js",
+    "test/**/*.es",
+    "test/**/*.js"
+  ],
+  "specFiles": ["test/**/*Spec.es"],
+  "srcFiles": ["src/**/*.js"],
+  "testFiles": ["test/**/*.js"],
+  "watchFiles": [
+    "src/**/*.js",
+    "test/**/*.es",
+    "test/**/*.js"
+  ]
+}

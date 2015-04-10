@@ -2,62 +2,20 @@
 
 // Required node modules
 var loadTasks = require("load-grunt-tasks");
-var stylish = require("jshint-stylish");
 
-var specFiles = "test/**/*Spec.es";
-var srcFiles = "src/**/*.js";
-var testFiles = "test/**/*.js";
+// Required files
+var filesets = require("./lib/grunt/filesets.json");
 
 module.exports = function (grunt) {
   // Load grunt plugins
   loadTasks(grunt);
 
   grunt.initConfig({
-    "jscs": {
-      options: {
-        config: ".jscsrc"
-      },
-      all: [
-        "Gruntfile.js",
-        srcFiles,
-        testFiles
-      ]
-    },
-
-    "jshint": {
-      options: {
-        jshintrc: true,
-        reporter: stylish
-      },
-      all: [
-        "Gruntfile.js",
-        srcFiles,
-        testFiles
-      ]
-    },
-
-    "mochaTest": {
-      test: {
-        options: {
-          reporter: "spec",
-          require: "babel/register"
-        },
-        src: [specFiles]
-      }
-    },
-
+    "jscs": require("./lib/grunt/jscs")(filesets),
+    "jshint": require("./lib/grunt/jshint")(filesets),
+    "mochaTest": require("./lib/grunt/mochaTest")(filesets),
     "pkg": grunt.file.readJSON("package.json"),
-
-    "watch": {
-      lint: {
-        files: [srcFiles, testFiles],
-        tasks: "lint"
-      },
-      tests: {
-        files: [srcFiles, testFiles, specFiles],
-        tasks: "mochaTest:test"
-      }
-    }
+    "watch": require("./lib/grunt/watch")(filesets)
   });
 
   grunt.registerTask("lint", "Run JSHint and JSCS", [
@@ -65,7 +23,5 @@ module.exports = function (grunt) {
     "jscs:all"
   ]);
 
-  grunt.registerTask("test", "Run tests", [
-    "mochaTest"
-  ]);
+  grunt.registerTask("test", "Run tests", ["mochaTest"]);
 };
