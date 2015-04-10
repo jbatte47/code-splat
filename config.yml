@@ -1,0 +1,3 @@
+default:
+  server:
+    defaultPort: 9669
